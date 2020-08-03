@@ -1,24 +1,33 @@
 package com.example.ecommerceapp.adapter
 
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import com.example.ecommerceapp.ProductFragmentDirections
 import com.example.ecommerceapp.R
 import com.example.ecommerceapp.model.Products
-import kotlinx.android.synthetic.main.layout_product_view.view.*
-import java.util.zip.Inflater
 
 class ProductsAdapter(private val products:ArrayList<Products>):RecyclerView.Adapter<ProductsAdapter.ViewHolder>(){
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsAdapter.ViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.layout_product_view,parent,false)
-        return ViewHolder(view)
+        val holder=ViewHolder(view)
+
+        view.setOnClickListener {
+            val action=
+                ProductFragmentDirections.actionProductFragmentToProductDetailsFragment(products[holder.adapterPosition].title)
+            Navigation.findNavController(parent).navigate(action)
+        }
+
+
+        return holder
     }
 
     override fun getItemCount()=products.size

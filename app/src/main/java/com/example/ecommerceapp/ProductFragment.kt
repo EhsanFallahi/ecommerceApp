@@ -12,38 +12,34 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerceapp.adapter.ProductsAdapter
 import com.example.ecommerceapp.model.Products
-import kotlinx.android.synthetic.main.fragment_first.*
 
-/**
- * A simple [Fragment] subclass as the default destination in the navigation.
- */
-class FirstFragment : Fragment() {
+class ProductFragment : Fragment() {
     lateinit var recyclerView: RecyclerView
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?): View? {
-        val view=inflater.inflate(R.layout.fragment_first, container, false)
+        val view=inflater.inflate(R.layout.fragment_product, container, false)
         recyclerView=view.findViewById(R.id.recycler_view)
 
-        val products= arrayListOf<Products>()
-        for(i in 0..100){
-            products.add(Products("Apple","https://tarehyar.ir/wp-content/uploads/2019/08/%D8%B3%DB%8C%D8%A8-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%DB%8C.jpg",84.2))
-        }
-        recyclerView.apply {
-            layoutManager=GridLayoutManager(context,2)
-            adapter=ProductsAdapter(products)
-
-        }
-
-//        initRecyclerView()
+        initRecyclerView()
 
 
         return view.rootView
     }
 
     private fun initRecyclerView() {
+        val products= arrayListOf<Products>()
+        for(i in 0..100){
+            products.add(Products("Apple $i",
+                "https://tarehyar.ir/wp-content/uploads/2019/08/%D8%B3%DB%8C%D8%A8-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86%DB%8C.jpg",
+                84.2))
+        }
+        recyclerView.apply {
+            layoutManager=GridLayoutManager(context,2)
+            adapter=ProductsAdapter(products)
 
+        }
     }
 
 }

@@ -3,26 +3,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/FirstFragment">
-
+    app:startDestination="@id/productFragment">
     <fragment
-        android:id="@+id/FirstFragment"
-        android:name="com.example.ecommerceapp.FirstFragment"
-        android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
-
+        android:id="@+id/productFragment"
+        android:name="com.example.ecommerceapp.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
         <action
-            android:id="@+id/action_FirstFragment_to_SecondFragment"
-            app:destination="@id/SecondFragment" />
+            android:id="@+id/action_productFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/SecondFragment"
-        android:name="com.example.ecommerceapp.SecondFragment"
-        android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
-
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.ecommerceapp.ProductDetailsFragment"
+        android:label="fragment_product_details"
+        tools:layout="@layout/fragment_product_details" >
         <action
-            android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
+            android:id="@+id/action_productDetailsFragment_to_productFragment"
+            app:destination="@id/productFragment" />
+        <argument
+            android:name="product_name"
+            app:argType="string" />
     </fragment>
 </navigation>
